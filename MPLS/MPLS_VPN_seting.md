@@ -225,7 +225,8 @@ CE_2(config-router)#network 192.168.2.0 mask 255.255.255.0
 
 
 2. 控制平面排错：MP-BGP (查路由传没传)
-如果 show ip route vrf 里没有路由，说明 BGP 没把路由送过来，重点查这里。
+
+    如果 show ip route vrf 里没有路由，说明 BGP 没把路由送过来，重点查这里。
 
     - show bgp vpnv4 unicast all summary
 
@@ -244,7 +245,7 @@ CE_2(config-router)#network 192.168.2.0 mask 255.255.255.0
 
 3. 数据平面排错：MPLS 与标签 
 
-如果路由表正常，但就是 Ping 不通，100% 是底层标签断了。
+    如果路由表正常，但就是 Ping 不通，100% 是底层标签断了。
 
     - show mpls ldp neighbor
 
@@ -267,7 +268,7 @@ CE_2(config-router)#network 192.168.2.0 mask 255.255.255.0
 
 4. 底层基建排错：IGP 
 
-一切上层建筑的基础。
+    一切上层建筑的基础。
 
     - show ip ospf neighbor
 
