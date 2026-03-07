@@ -433,7 +433,7 @@ PE_1(config-router-af)#neighbor 172.16.20.1 allowas-in ?
   <1-10>  Number of occurances of AS number
   <cr>
 // 数字代表相同 AS 号能出现几次, 默认是1
-PE_1(config-router-af)#neighbor 172.16.20.1 allowas-in 1
+PE_1(config-router-af)#neighbor 172.16.20.1 allowas-in 2
 ```
 ## 验证
 
