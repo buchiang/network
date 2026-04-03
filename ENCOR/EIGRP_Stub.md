@@ -48,7 +48,7 @@
 ### 配置 1 ACL 过滤
 
 ```
-R1#show ip route ospf | inc 20
+R1#show ip route ospf  inc 20
       20.0.0.0/32 is subnetted, 2 subnets
 O        20.1.1.1 [110/11] via 12.1.1.2, 00:14:16, Ethernet0/0
 O        20.2.2.1 [110/11] via 12.1.1.2, 00:14:16, Ethernet0/0
@@ -74,7 +74,7 @@ R1(config-router)#distribute-list FILTER_20_2 in
 #### 验证
 
 ```
-R1(config-router)#do show ip route os | inc 20
+R1(config-router)#do show ip route os  inc 20
 O        20.1.1.1 [110/11] via 12.1.1.2, 00:00:12, Ethernet0/0
 ```
 
@@ -187,13 +187,18 @@ R2 知道 R3 是 stub 了
 
 ##### 进阶-Stub 类型对比 & 选择指南
 
-|:--------------------:|:-------------:|:----------------:|
-|命令                  |宣告路由类型    |典型场景           |
-|stub connected        |直连路由（默认）|分支站点只有直连网段|
-|stub connected summary|直连 + 汇总路由 |分支有汇总需求     |
-|stub redistributed    |重分发路由      |分支连接其他协议   |
-|stub summary          |只宣告汇总      |严格汇总控制       |
-|stub receive-only     |不宣告任何路由   |纯接收，只做客户端|
+命令                    宣告路由类型        典型场景           
+
+stub connected          直连路由（默认）    分支站点只有直连网段
+
+stub connected summary  直连 + 汇总路由     分支有汇总需求     
+
+stub redistributed      重分发路由          分支连接其他协议   
+
+stub summary            只宣告汇总          严格汇总控制       
+
+stub receive-only       不宣告任何路由      纯接收，只做客户端
+
 
 1. Stub 路由器不能作为中转（Transit）。如果 R3 后面还有其他路由器需要通过 R3 到达 R2，配置 Stub 会导致那些路由器失联。
 
@@ -220,16 +225,18 @@ R2(config-router-af-topology)#distribute-list prefix DENY_OUT out ospf 1
 ```
 
 ```
-R3#show ip route eigrp | inc 20.2
+R3#show ip route eigrp  inc 20.2
 R3#
 ```
 
 - in vs out 总结对比
 
-|:--:|:-------------:|:-------------:|:--------------------:|
-|方向|作用位置        |影响范围        |典型用途               |
-|in  |本地路由器安装时|只影响自己的 RIB |防止某路由进入本地路由表|
-|out |重分发/更新发出时|影响邻居的 RIB |控制向外宣告什么路由     |
+
+方向作用位置     影响范围                      典型用途          
+
+in              本地路由器安装时只影响自己的    RIB 防止某路由进入本地路由表
+
+out             重分发/更新发出时影响邻居的     RIB 控制向外宣告什么路由     
 
 ## 完整排错命令速查
 
