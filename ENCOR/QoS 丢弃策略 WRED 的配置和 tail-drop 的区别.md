@@ -115,7 +115,7 @@ R1#show policy-map interface e0/1
 
 # 和 tail-drop 的完整对比
 
-|\|Tail-Drop|WRED|
+||Tail-Drop|WRED|
 |:--:|:--:|:--:|
 |丢弃时机|队列满才丢|队列变深时概率丢|
 |TCP 全局同步|有，带宽锯齿|无，各流独立调整|
