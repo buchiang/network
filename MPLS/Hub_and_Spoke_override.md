@@ -7,6 +7,16 @@
 
 前期配置依照 [Hub&Spoke](MPLS_VPN_Hub&Spoke.md)
 
+建议手动设置 扩展团体属性 确保 RT 被 BGP 传递
+
+CE_1,2,3, P1
+
+```
+router bgp 10000
+address-family vpnv4
+neighbor x.x.x.x send-community extended
+```
+
 ## 关键配置
 
 PE_1
@@ -18,7 +28,7 @@ PE_1(config-router-af)#neighbor 172.16.10.1 as-override
 // 将 CE_1 发给 PE_1 的 BGP 路由将 AS 转为 10000
 
 PE_1(config-router)#address-family ipv4 vrf HUBOUT
-PE_1(config-router-af)#neighbor 172.16.20.1 allowas-in 2
+PE_1(config-router-af)#neighbor 172.16.20.1 allowas-in 1
 // 要允许带有 AS 10000 的 BGP 路由重回 AS 10000
 ```
 
