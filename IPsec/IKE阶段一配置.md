@@ -37,6 +37,17 @@ Qick mode 在阶段二会有3个包, Main mode 在阶段一会有6个包, Aggres
 
 2. 协商 IKE 策略
 
+在 1,2 包的时候绝对不会进行数据传输. 
+
+### 3-4 包
+
+在1,2 包协商好加密策略后, 缺少密钥. 所以在3-4 包会采用 Diffie-Hellman 计算密钥.
+
+
+### 5-6 包
+
+在安全的环境下进行认证
+
 ------------------
 
 ![](../image/IPSec/26042600.png)
@@ -91,4 +102,10 @@ R1(config-isakmp)#lifetime 3600
 
 `R1(config)#crypto isakmp key ccielab address 12.1.1.2`
 
-9
+`R1(config)#crypto isakmp key [key] address [address]`
+
+`show crypto isakmp sa` 查看阶段1 
+
+`show crypto ipsec sa` 阶段2
+
+`clear crypyto session` 清楚加密的进程
