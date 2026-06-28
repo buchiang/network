@@ -95,7 +95,7 @@ R1#show ip nhrp
 172.16.1.1/32 via 172.16.1.1
    Tunnel0 created 00:08:13, expire 00:08:26
    Type: dynamic, Flags: registered nhop
-   //由于注册动态(dynamic)获取的映射信息
+   //由于注册动态(dynamic)获取的映射信息, 因为不是静态, 所有能获取动态的 IP 的分支站点公网 IP
    NBMA address: 202.100.2.1
    映射 R2 的虚拟 IP 地址到公网 IP
 172.16.1.2/32 via 172.16.1.2
@@ -115,4 +115,38 @@ R2#show ip nhrp
    NBMA address: 202.100.1.100
    // 中心站点的虚拟 IP 到公网 IP
 ```
-165
+
+```
+R1#show dmvpn
+Legend: Attrb --> S - Static, D - Dynamic, I - Incomplete
+        N - NATed, L - Local, X - No Socket
+        T1 - Route Installed, T2 - Nexthop-override
+        C - CTS Capable, I2 - Temporary
+        # Ent --> Number of NHRP entries with same NBMA peer
+        NHS Status: E --> Expecting Replies, R --> Responding, W --> Waiting
+        UpDn Time --> Up or Down Time for a Tunnel
+==========================================================================
+
+Interface: Tunnel0, IPv4 NHRP Details
+Type:Hub, NHRP Peers:2,
+
+ # Ent  Peer NBMA Addr Peer Tunnel Add State  UpDn Tm Attrb
+ ----- --------------- --------------- ----- -------- -----
+     1 202.100.2.1          172.16.1.1    UP 00:07:03     D
+     1 202.100.3.1          172.16.1.2    UP 00:07:03     D
+```
+
+### 新增站点
+
+因为中心站点是动态获取 IP, 切记不要动配置, 只需要在分支站点上设置即可.
+
+```
+R1#show ip nhrp multicast
+  I/F     NBMA address
+Tunnel0    202.100.3.1     Flags: dynamic          (Enabled)
+Tunnel0    202.100.2.1     Flags: dynamic          (Enabled)
+```
+
+组播映射是自动开启的
+
+
