@@ -115,13 +115,7 @@ print(hostname)
 
 `GigabitEthernet0/0 is up`
 
-如果想判断：
-
-是不是：
-
-UP
-
-可以：
+如果想判断是不是 UP 可以：
 
 ```
 status = "GigabitEthernet0/0 is up"

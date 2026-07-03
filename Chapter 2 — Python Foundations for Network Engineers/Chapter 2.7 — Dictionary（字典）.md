@@ -40,21 +40,7 @@ device = {
 }
 ```
 
-Value 可以是：
-
-String
-
-Integer
-
-Boolean
-
-List
-
-Dictionary
-
-Tuple
-
-…
+Value 可以是：String, Integer, Boolean, List, Dictionary, Tuple …
 
 ## Nested Dictionary（嵌套字典）
 
@@ -109,9 +95,7 @@ device = {
 
 ## 更进一步（真正企业项目）
 
-企业里面通常不是一个设备。
-
-而是很多设备。
+企业里面通常不是一个设备。而是很多设备。
 
 于是就变成：
 
@@ -134,12 +118,12 @@ devices = [
 
 这里其实是：
 
+```
 List
  │
  ├── Dictionary
  ├── Dictionary
  └── Dictionary
+```
 
-这就是 CCIE 自动化最经典的数据结构。
-
-以后几乎所有项目都会长这样。
+这就是 CCIE 自动化最经典的数据结构。以后几乎所有项目都会长这样。

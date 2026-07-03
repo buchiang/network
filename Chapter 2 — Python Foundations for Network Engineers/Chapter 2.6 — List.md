@@ -24,29 +24,23 @@ devices = ["R1", "R2", "R3"]
 print(devices[0])
 ```
 
-结果
-
-R1
+输出 `R1`
 
 ### Negative Index
 
 Python 很方便。
 
-最后一个：
+想要最后一个：
 
 `devices[-1]`
 
-得到：
-
-R3
+得到：`R3`
 
 倒数第二：
 
 `devices[-2]`
 
-得到：
-
-R2
+得到：`R2`
 
 ## Mutable（可变对象）
 

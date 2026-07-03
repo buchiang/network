@@ -19,20 +19,25 @@
 ## Python 工作流
 
 Python Source Code
-        │
-        ▼
+
+        ⬇
+
 Python Interpreter
-        │
-        ▼
+
+        ⬇
+
 Bytecode（Python 字节码）
-        │
-        ▼
+
+        ⬇
+
 Python Virtual Machine（PVM）
-        │
-        ▼
+
+        ⬇
+
 Operating System
-        │
-        ▼
+
+        ⬇
+
        CPU
 
 *Python Virtual Machine（PVM）不是 VMware、VirtualBox 那种虚拟机。*
@@ -94,7 +99,7 @@ Purpose:
 
 Lab 2.2
 
-[lab02.py](lab02.py)
+[lab02.py](python/lab02.py)
 
 在 linux 中
 

@@ -1,8 +1,4 @@
 
-一句话概括：
-
-变量就是一个有名字的对象（Object）。
-
 # Learning Objectives
 
 完成本节后，你应该能够：
@@ -18,6 +14,8 @@
 - 使用变量存储数据
 
 - 在 Cisco Automation 中使用变量
+
+一句话概括：变量就是一个有名字的对象（Object）。
 
 ## Assignment（赋值）
 
