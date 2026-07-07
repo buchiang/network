@@ -18,7 +18,7 @@
 
 Chapter 2 我们学习了：
 
-```
+```python
 import time
 import os
 import json
@@ -48,29 +48,17 @@ Server
 
 如果所有项目都共用一个 Python 环境：
 
-System Python
-
-↓
-
-所有项目共享
+System Python ➡ 所有项目共享
 
 那么升级一个库：
 
-pip install --upgrade netmiko
+`pip install --upgrade netmiko`
 
 可能导致另一个项目无法运行。
 
 因此企业采用：
 
-Project
-
-↓
-
-Virtual Environment
-
-↓
-
-Independent Packages
+Project ➡ Virtual Environment ➡ Independent Packages
 
 每个项目拥有独立依赖。这就是 Python 工程化开发的基础。
 
@@ -140,7 +128,7 @@ automation_project/
 
 建议：
 
-```
+``` 
 mkdir automation_project
 cd automation_project
 ```
@@ -151,7 +139,7 @@ cd automation_project
 
 确保已经进入项目目录。
 
-```
+```bash
 user@ubuntu22-desktop:~/automation_project$ pwd
 /home/user/automation_project
 ```
@@ -266,7 +254,7 @@ scp
 
 内容：
 
-```
+```python
 from netmiko import ConnectHandler
 print("Netmiko Installed Successfully")
 ```
@@ -300,7 +288,7 @@ ModuleNotFoundError
 
 很多教程直接告诉你：
 
-```
+```python
 ConnectHandler(
     device_type="cisco_ios",
     host="10.10.10.11",
@@ -413,7 +401,7 @@ ConnectHandler
 
 .gitignore 中至少包含：
 
-```
+```bash
 venv/
 __pycache__/
 *.pyc
@@ -425,7 +413,7 @@ Git 应提交源代码，而不是整个 Python 环境。
 
 虽然后续实验会暂时使用：
 
-```
+```python
 username = "admin"
 password = "cisco123"
 ```

@@ -34,7 +34,7 @@ Netmiko 提供了专门的配置接口 `sned.config_set()` 不必使用 `connect
 
 配置命令：
 
-```
+```python
 commands = [
     "interface Loopback0",
     "ip address 1.1.1.1 255.255.255.255",
@@ -50,7 +50,7 @@ commands = [
 
 ### 完整程序
 
-```
+```python
 from netmiko import ConnectHandler
 
 device = {
@@ -97,7 +97,7 @@ print("Configuration deployment completed.")
 
 更推荐使用：
 
-```
+```python
 commands = [
     "interface Loopback0",
     "ip address 1.1.1.1 255.255.255.255",

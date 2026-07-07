@@ -20,7 +20,7 @@
 
 下面的程序与上一课相比，只增加了一条 Show Command。
 
-```
+```python
 from netmiko import ConnectHandler
 
 device = {

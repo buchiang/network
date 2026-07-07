@@ -16,7 +16,7 @@
 
 上一课，我们使用了下面这段代码：
 
-```
+```python
 device = {
     "device_type": "cisco_ios",
     "host": "10.10.10.11",
@@ -65,7 +65,7 @@ device = {
 
 假设写成：
 
-```
+```python
 device = [
     "cisco_ios",
     "10.10.10.11",
@@ -80,7 +80,7 @@ device = [
 
 Dictionary：
 
-```
+```python
 device = {
     "host": "10.10.10.11",
 }
@@ -92,7 +92,7 @@ device = {
 
 本课继续使用上一课的 Device Dictionary：
 
-```
+```python
 device = {
     "device_type": "cisco_ios",
     "host": "10.10.10.11",

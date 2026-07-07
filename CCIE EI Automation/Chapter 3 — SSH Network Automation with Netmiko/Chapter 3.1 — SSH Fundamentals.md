@@ -16,7 +16,7 @@
 
 在 Linux SSH 到设备时, 由于有些老设备支持的 SSH 协议较老, 特别是 Ubuntu 已经仅用了这些老协议, 就会出现
 
-```
+```bash
 user@ubuntu22-desktop:~$ ssh admin@12.1.1.1 Unable to negotiate with 12.1.1.1 port 22: 
 no matching key exchange method found. 
 Their offer: 
@@ -27,7 +27,7 @@ diffie-hellman-group14-sha1
 
 在 Linux 上
 
-```
+```bash
 ssh \
 -oKexAlgorithms=+diffie-hellman-group14-sha1 \
 -oHostKeyAlgorithms=+ssh-rsa \
@@ -106,69 +106,17 @@ SSH 完成四件事情：
 
 建立 SSH 后，会形成一个 Session。
 
-Ubuntu
-
-│
-
-SSH Session
-
-│
-
-Cisco IOS
-
-│
-
-CLI
+Ubuntu ➡ SSH Session ➡ Cisco IOS ➡ CLI
 
 这个 Session 里面包含：
 
-Authentication
-
-↓
-
-Encryption
-
-↓
-
-Channel
-
-↓
-
-CLI
-
-↓
-
-Prompt
+Authentication ➡ Encryption ➡ Channel ➡ CLI ➡ Prompt
 
 其中最重要的是 **SSH Channel** SSH 并不是每执行一次命令就建立一次 TCP。
 
 而是：
 
-SSH Connection
-
-↓
-
-SSH Channel
-
-↓
-
-show version
-
-↓
-
-show ip int brief
-
-↓
-
-show run
-
-↓
-
-copy run start
-
-↓
-
-exit
+SSH Connection ➡ SSH Channel ➡ show version ➡ show ip int brief ➡ show run ➡ copy run start ➡ exit
 
 全部共用一个 Channel。
 
@@ -180,31 +128,11 @@ exit
 
 很多人认为 SSH 登录以后：
 
-Python
-
-↓
-
-Cisco
+Python ➡ Cisco
 
 实际上，中间还有：
 
-Python
-
-↓
-
-SSH
-
-↓
-
-VTY
-
-↓
-
-EXEC
-
-↓
-
-CLI
+Python ➡ SSH ➡ VTY ➡ EXEC ➡ CLI
 
 Cisco IOS 收到 SSH 后首先进入 VTY Line。
 
@@ -228,19 +156,7 @@ Netmiko 会不断检测 Prompt。
 
 例如：
 
-R1#
-
-↓
-
-发送命令
-
-↓
-
-等待 Prompt 返回
-
-↓
-
-继续下一条命令
+R1# ➡ 发送命令 ➡ 等待 Prompt 返回 ➡ 继续下一条命令
 
 所以 Prompt 是 Netmiko 判断 命令是否执行完成的重要依据。
 
@@ -266,7 +182,7 @@ Netmiko 已经全部做好。
 
 例如：
 
-```
+``` python
 output = net_connect.send_command(
     "show version"
 )
@@ -274,27 +190,7 @@ output = net_connect.send_command(
 
 Netmiko 内部实际上做了：
 
-发送命令
-
-↓
-
-等待 Prompt
-
-↓
-
-读取 Buffer
-
-↓
-
-去掉 Echo
-
-↓
-
-处理分页
-
-↓
-
-返回字符串
+发送命令 ➡ 等待 Prompt ➡ 读取 Buffer ➡ 去掉 Echo ➡ 处理分页 ➡ 返回字符串
 
 因此：
 
@@ -358,7 +254,7 @@ R1#show users
 
 如果 SSH 尚未启用，可按以下步骤配置：
 
-```
+```bash
 conf t
 
 hostname R1

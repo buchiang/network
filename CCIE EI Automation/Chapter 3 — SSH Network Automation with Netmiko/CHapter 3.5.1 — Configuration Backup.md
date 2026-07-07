@@ -18,7 +18,7 @@
 
 建立连接后：
 
-```
+```python
 running_config = connection.send_command(
     "show running-config"
 )
@@ -32,7 +32,7 @@ Chapter 2 已学习文件操作。
 
 因此可以直接使用：
 
-```
+```python
 with open("R1_running.cfg", "w") as file:
     file.write(running_config)
 ```
@@ -41,7 +41,7 @@ with open("R1_running.cfg", "w") as file:
 
 ## 完整程序
 
-```
+```python
 from netmiko import ConnectHandler
 
 device = {

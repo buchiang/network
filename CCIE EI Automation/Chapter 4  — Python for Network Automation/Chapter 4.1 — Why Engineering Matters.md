@@ -18,7 +18,7 @@
 
 假设现在有一个实验需求。需要登录一台 Cisco IOSv，执行三条命令：
 
-```
+```bash
 show version
 show ip interface brief
 show ip route
@@ -26,7 +26,7 @@ show ip route
 
 在 Chapter 3 中，我们完全可以写出这样的程序：
 
-```
+```python
 from netmiko import ConnectHandler
 
 device = {
@@ -82,7 +82,7 @@ connection.disconnect()
 
 实验环境1台 Router. 企业环境120台 Router, 85台 Switch, 30台 Firewall 如果每台设备都复制一遍登录代码
 
-```
+```python 
 ConnectHandler(...)
 ConnectHandler(...)
 ConnectHandler(...)
@@ -112,19 +112,8 @@ ConnectHandler(...)
 
 虽然 Cisco IOS 本身并不关心 Python 代码如何组织，但 Cisco 在官方自动化实践中一直强调自动化脚本应具有可维护性、可重复使用性和可扩展性。例如，一个典型的网络自动化流程可以表示为
 
-```
-准备设备信息
-⬇
-建立连接
-⬇
-进入特权模式
-⬇
-执行命令
-⬇
-处理输出
-⬇
-关闭连接
-```
+准备设备信息 ➡ 建立连接 ➡ 进入特权模式 ➡ 执行命令 ➡ 处理输出 ➡ 关闭连接
+
 
 这个流程本身就具有清晰的阶段划分。因此，在 Python 中，也应该将这些阶段设计为独立的能力，而不是全部写在一个连续的脚本中。这也是后续进行函数封装和模块化设计的基础。
 

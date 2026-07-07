@@ -30,7 +30,7 @@
 
 前面的课程中，我们只有一台设备：
 
-```
+```python
 device = {
     "device_type": "cisco_ios",
     "host": "10.10.10.11",
@@ -57,7 +57,7 @@ List
 
 首先定义三台设备。
 
-```
+```python
 r1 = {
     "device_type": "cisco_ios",
     "host": "12.1.1.1",
@@ -82,7 +82,7 @@ r3 = {
 
 然后：
 
-```
+```python
 devices = [
     r1,
     r2,
@@ -104,7 +104,7 @@ devices = [
 
 ## 完整程序
 
-```
+```python
 from netmiko import ConnectHandler
 
 r1 = {
@@ -147,7 +147,7 @@ for device in devices:
 
 整个程序只写了一次：
 
-```
+```python
 ConnectHandler()
 send_command()
 disconnect()

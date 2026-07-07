@@ -16,7 +16,7 @@
 
 ## 第一个 Show Command
 
-```
+```python
 from netmiko import ConnectHandler
 
 device = {
@@ -57,7 +57,7 @@ connection.disconnect()
 
 执行：
 
-```
+```python
 output = connection.send_command(
     "show version"
 )
@@ -65,20 +65,7 @@ output = connection.send_command(
 
 发生了什么？
 
-
-```
-Python
-↓
-SSH Session
-↓
-Cisco CLI
-↓
-执行：show version
-↓
-Cisco 返回结果
-↓
-保存到变量 output
-```
+Python ➡ SSH Session ➡ Cisco CLI ➡ 执行：show version ➡ Cisco 返回结果 ➡ 保存到变量 output
 
 注意这里 `output`是一个 String。这并不是新的 Python 知识。Chapter 2 已经学习过 String 可以保存任意文本。这里保存的是 Cisco CLI 输出。
 

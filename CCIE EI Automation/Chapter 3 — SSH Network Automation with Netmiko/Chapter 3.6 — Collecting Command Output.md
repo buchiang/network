@@ -20,7 +20,7 @@
 
 下面的程序连续采集两条命令。
 
-```
+```python
 from netmiko import ConnectHandler
 
 device = {

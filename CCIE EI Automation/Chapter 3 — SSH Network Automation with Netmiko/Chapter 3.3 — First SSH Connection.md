@@ -37,17 +37,7 @@ Netmiko 使用统一的入口函数 `ConnectHandler()` 建立 SSH 连接。连�
 
 整个过程如下：
 
-```
-Python Script
-⬇
-ConnectHandler()
-⬇
-SSH Authentication
-⬇
-Cisco IOS CLI
-⬇
-Connection Object
-```
+Python Script ➡ `ConnectHandler()` ➡ SSH Authentication ➡ Cisco IOS CLI ➡ Connection Object
 
 后续所有自动化操作，都将基于这个连接对象完成。
 
@@ -65,7 +55,7 @@ Connection Object
 
 例如：
 
-```
+```python
 device = {
     "device_type": "cisco_ios",
     "host": "10.10.10.11",
@@ -96,7 +86,7 @@ Dictionary 非常适合描述这种键值关系。随着课程深入，还会增
 
 编写代码：
 
-```
+```python
 from netmiko import ConnectHandler
 
 device = {
@@ -129,7 +119,7 @@ print("SSH connection closed.")
 
 ### 第一步
 
-```
+```python
 device = {
     ...
 }

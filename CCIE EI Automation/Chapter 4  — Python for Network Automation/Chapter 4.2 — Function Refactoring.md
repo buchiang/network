@@ -115,7 +115,7 @@ execute_show_command()
 
 ### 第一步建立连接函数。
 
-```
+```python 
 from netmiko import ConnectHandler
 
 def connect_device(device):
@@ -128,7 +128,7 @@ def connect_device(device):
 
 ### 第二步建立执行命令函数。
 
-```
+```python
 def execute_show_command(connection, command):
     output = connection.send_command(command)
     return output
@@ -146,7 +146,7 @@ def execute_show_command(connection, command):
 
 ### 第三步建立断开连接函数。
 
-```
+```python
 def disconnect_device(connection):
     connection.disconnect()
 ```
@@ -155,7 +155,7 @@ def disconnect_device(connection):
 
 ### 第四步：Main Program。
 
-```
+```python 
 connection = connect_device(device)
 
 print(execute_show_command(connection, "show version"))
@@ -191,7 +191,7 @@ Connect ➡ Execute ➡ Disconnect
 
 例如：
 
-```
+```python 
 def execute_show_command(connection, command):
     print(connection.send_command(command))
 ```
@@ -204,7 +204,7 @@ def execute_show_command(connection, command):
 
 工程上，更好的做法是：
 
-```
+```python 
 output = execute_show_command(connection, "show version")
 print(output)
 ```
@@ -225,11 +225,9 @@ Connect ➡ Execute ➡ Disconnect
 
 真正完成工作的，是下面这些能力：
 
-```
+```python 
 connect_device()
-
 execute_show_command()
-
 disconnect_device()
 ```
 
