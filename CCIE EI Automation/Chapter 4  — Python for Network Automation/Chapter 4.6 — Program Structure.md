@@ -94,7 +94,7 @@ Prepare ➡ Connect ➡ Execute ➡ Collect Result ➡ Disconnect ➡ Finish
 
 观察目前程序, 它实际上已经分成：
 
-Function ➡ ain Workflow
+Function ➡ main Workflow
 
 ### 思考下面哪些属于：Workflow？
 
@@ -112,7 +112,7 @@ disconnect_device(connection)
 
 所以一个企业脚本应该满足：
 
-Workflow ➡ 调用 ➡ Capabilities
+Workflow ➡ 调用 Capabilities
 
 而不是：
 

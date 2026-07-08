@@ -58,7 +58,7 @@ Cisco 网络环境中, 最常见的异常包括：
 
 ![](<../Chapter 3 — SSH Network Automation with Netmiko/image/3.2-0.png>)
 
-[lab 4.4.py](<LABs/lab 4.4.py>) 把设备 IP：12.1.1.1 故意改成：10.1.0.1（实验环境中不存在该设备。） 
+[lab 4.4.py](<LABs/lab 4.4.py>) 把设备 IP：12.1.1.1 故意改成：10.1.1.1（实验环境中不存在该设备。） 
 
 在 EVE-NG 运行 
 

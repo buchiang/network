@@ -185,6 +185,8 @@ except Exception as error:
 
 说明日志已经开始记录程序运行过程。
 
+[lab 4.5.py](<LABs/lab 4.5.py>)
+
 # Troubleshooting
 
 ### 问题一：为什么还有 `print()`？

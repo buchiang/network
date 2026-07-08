@@ -169,6 +169,8 @@ Connect ➡ Execute ➡ Disconnect
 
 代码已经越来越像网络自动化流程。
 
+[lab 4.2.py](<LABs/lab 4.2.py>)
+
 ## Verify Again
 
 确认程序输出是否与 Chapter 3 完全一致。应该看到 `show version` 的输出没有变化。

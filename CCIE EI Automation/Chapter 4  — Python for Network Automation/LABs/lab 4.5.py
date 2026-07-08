@@ -1,4 +1,11 @@
 from netmiko import ConnectHandler
+import logging
+
+logging.basicConfig(
+    filename="logs/automation.log",
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s"
+)
 
 devices = {
     "device_type": "cisco_ios", 
@@ -12,6 +19,7 @@ try:
     connection = ConnectHandler(**devices)
     connection.enable()
 except Exception as e:
-    print(f"there is an error: {e}")
+    logging.error(e) #THE NEW FUNCTION
+    print(e)
     connection.disconnect()
     exit()
