@@ -1,4 +1,6 @@
 hostname {{ hostname }}
-
+{% if interface == "Loopback0" %}
 interface Loopback0
  ip address {{ loopback_ip }} {{ subnet_mask }}
+ no shutdown
+{% endif %}

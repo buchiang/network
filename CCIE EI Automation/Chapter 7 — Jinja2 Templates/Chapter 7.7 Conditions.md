@@ -96,7 +96,7 @@ Render：`(empty)`
 
 如果 `enabled = True` 
 
-Render：n`o shutdown`
+Render：`no shutdown`
 
 如果 `enabled = False`
 

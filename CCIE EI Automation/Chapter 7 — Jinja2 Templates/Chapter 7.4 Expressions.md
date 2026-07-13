@@ -89,7 +89,7 @@ Render：`R1-MGMT`
 
 Render：`Loopback0`
 
-Jinja2 使用：`~
+Jinja2 使用：`~`
 
 作为字符串连接（Concatenation）运算符，而不是 Python 中的 + , 这是 Jinja2 的语法特点。
 
