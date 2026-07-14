@@ -1,26 +1,24 @@
 from netmiko import ConnectHandler
 
-def conect_device(device):
+def connect_device(device):
+    """
+    Establish an SSH connection to a network device
+    """
     try:
         connection = ConnectHandler(**device)
-        connection.enable
+        connection.enable() #if device doesn't enable secret, can be deleted 
         return connection
     except Exception as e:
         print(f"Failed to connect device {e}")
-        raise
-
-def execute_show_command(connection, command):
-    try:
-        output = connection.send_command(command)
-        return output
-    except Exception as e:
-        print(f"Failed to excute command: {e}")
-        raise
+        raise #only for reporting error 
 
 def disconnect_device(connection):
+    """
+    Disconnect from the network device.
+    """
     try:
         connection.disconnect()
     except Exception as e:
-        print(f"Failed to disconnect from device "{e})
+        print(f"Failed to disconnect from device {e}")
         raise
     
