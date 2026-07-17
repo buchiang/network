@@ -10,7 +10,7 @@ from modules import output
 from modules import deployment
 from modules import validator
 from modules.logger import logger
-
+from modules import backup
 
 def main():
     print("=" * 60)
@@ -54,7 +54,7 @@ def main():
             "host": device["host"],
             "username": device["username"],
             "password": device["password"],
-}
+        }
         
         # Connect to the device
         connection_object = connection.connect_device(connection_device)
@@ -73,6 +73,18 @@ def main():
                 "show running-config | include hostname",
                 f"hostname {device_data['hostname']}"
             )
+
+            # Retrieve the running configuration
+            backup_configuration = (backup.get_running_configuration(connection_object))
+
+            # Define the backup file path
+            backup_file = f"backups/{device['hostname']}.cfg"
+
+            # Save the running configuration
+            output.save_configuration(
+            backup_file,
+            backup_configuration
+        )
 
         finally:
             # Disconnect from the device
@@ -102,5 +114,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-
