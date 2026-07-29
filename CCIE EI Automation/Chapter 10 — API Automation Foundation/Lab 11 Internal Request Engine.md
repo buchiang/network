@@ -18,6 +18,8 @@
 
 目前 `api_client.py` 大致结构如下: 
 
+GET:
+
 ```python
 def get(url):
 
@@ -158,6 +160,128 @@ def _request(method, url, **kwargs):
 ```
 
 这里第一次使用 `session.request(...)` 需要说明. 它不是新的协议, 也不是新的库. 而是 Session 提供的**通用请求接口**. 
+
+这里的 `**kwargs` 表示接受任意数量的关键字参数(keyword arguments), 并把他们打包成一个字典(dict).
+
+例如
+
+```
+response = _request(
+    "GET",
+    "https://example.com",
+    headers={"Accept": "application/json"},
+    timeout=10
+)
+```
+
+python 会把这些参数变为:
+
+```
+kwargs = {
+    "headers": {"Accept": "application/json"},
+    "timeout": 10
+}
+```
+
+为什么前面要加两个 `*` 
+
+这里有两个概念需要区分：
+
+`*args` 收集位置参数(Positional Arguments)
+
+```python
+def test(*args):
+    print(args)
+
+test(1, 2, 3)
+```
+
+输出:
+
+```python
+(1, 2, 3)
+```
+它是一个 tuple.
+
+`**kwargs` 收集关键字参数(Keyword Arguments).
+
+```python
+def test(**kwargs):
+    print(kwargs)
+
+test(a=1, b=2)
+```
+
+输出:
+
+```python
+{
+    "a": 1,
+    "b": 2
+}
+```
+
+它是一个 dict.
+
+### 为什么 API Client 要这样写？
+
+如果不用 `**kwargs`, 你可能需要这样定义:
+
+```python
+def _request(
+    method,
+    url,
+    headers=None,
+    params=None,
+    json=None,
+    timeout=10,
+    verify=True,
+    auth=None,
+    cookies=None,
+    proxies=None,
+):
+    ...
+```
+
+随着 `requests.request()` 支持的参数越来越多, 你就必须不断修改 `_request()` 的参数列表.
+
+而使用:
+
+```python
+def _request(method, url, **kwargs):
+```
+
+无论调用者传入什么参数, 都可以直接转交给 `requests.request()：`
+
+`return requests.request(method, url, **kwargs)`
+
+例如:
+
+```python
+_request(
+    "GET",
+    url,
+    headers=headers,
+    timeout=10,
+    verify=False,
+    params=params
+)
+```
+
+等价于:
+
+```python
+requests.request(
+    "GET",
+    url,
+    headers=headers,
+    timeout=10,
+    verify=False,
+    params=params
+)
+```
+
+这样 `_request()` 就成了一个通用的中间层(Internal Request Engine).
 
 ## 简化 GET
 

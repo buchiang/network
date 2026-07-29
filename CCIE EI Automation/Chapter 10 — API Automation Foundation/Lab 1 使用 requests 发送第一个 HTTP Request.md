@@ -190,15 +190,15 @@ print(response.status_code)
 
 输出: 200
 
-说明服务器已经成功处理请求. 
+说明服务器已经成功处理请求.
 
-这里再次验证了上一节建立的工程原则: 
+这里再次验证了上一节建立的工程原则:
 
 HTTP Request → Status Code → Business Logic
 
-程序首先获得: Status Code. 
+程序首先获得: Status Code.
 
-然后才决定是否继续处理数据. 
+然后才决定是否继续处理数据.
 
 ## 查看 Response Body
 
