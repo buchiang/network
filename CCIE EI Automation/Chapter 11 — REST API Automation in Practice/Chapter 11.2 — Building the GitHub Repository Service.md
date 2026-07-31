@@ -1,8 +1,8 @@
 本节开始把 Chapter 10 的 API Automation Framework 应用于真实 REST API. 
 
-我们不会绕过现有架构, 也不会重新创建项目结构. 
+我们不会绕过现有架构, 也不会重新创建项目结构.
 
-继续使用: 
+继续使用:
 
 ```
 Workflow
@@ -18,11 +18,11 @@ GitHub REST API
 
 ## Theory
 
-在 Chapter 10 中, 我们使用的是教学 API. 它的目标是解释 HTTP、Endpoint、Payload、Service Layer 和 API Client. 
+在 Chapter 10 中, 我们使用的是教学 API. 它的目标是解释 HTTP、Endpoint、Payload、Service Layer 和 API Client.
 
-Chapter 11 开始使用真实 API. 
+Chapter 11 开始使用真实 API.
 
-真实 API 与教学 API 最大的区别是: 
+真实 API 与教学 API 最大的区别是:
 
 ```
 真实 API 有正式 Documentation. 
@@ -308,27 +308,27 @@ api_client.py 不知道 GitHub Repository.
 Workflow 不知道 Endpoint. 
 ```
 
-这正是 Chapter 10 建立的边界. 
+这正是 Chapter 10 建立的边界.
 
 Engineering Best Practice
 
-真实 API 集成时, 应保持: 
+真实 API 集成时, 应保持:
 
-- Path Parameter 由 Service 映射. 
+- Path Parameter 由 Service 映射.
 
-- Query Parameters 由 Service 决定. 
+- Query Parameters 由 Service 决定.
 
-- Headers 由 API Client 构造. 
+- Headers 由 API Client 构造.
 
-- Base URL 来自 Configuration. 
+- Base URL 来自 Configuration.
 
-- Response Payload 由 Service 转换为 Business Object. 
+- Response Payload 由 Service 转换为 Business Object.
 
-- Workflow 只调用业务接口. 
+- Workflow 只调用业务接口.
 
 ## Engineering Insight
 
-本节真正完成的是: 
+本节真正完成的是:
 
 ```
 External API Model
@@ -337,29 +337,29 @@ Service Mapping
     ↓
 Internal Business Object
 ```
-GitHub 返回的是 GitHub 的数据模型. 
+GitHub 返回的是 GitHub 的数据模型.
 
-Workbook 需要的是 Automation Platform 的业务对象. 
+Workbook 需要的是 Automation Platform 的业务对象.
 
-Service Layer 的价值就在于隔离这两者. 
+Service Layer 的价值就在于隔离这两者.
 
 ## Engineering Checklist
 
-完成本节后, 应能够回答: 
+完成本节后, 应能够回答:
 
-- 为什么不在 Workflow 中调用 GitHub Endpoint? 
+- 为什么不在 Workflow 中调用 GitHub Endpoint?
 
-- 为什么 Path Parameter 应由 Service 处理? 
+- 为什么 Path Parameter 应由 Service 处理?
 
-- 为什么 Headers 不属于 Service? 
+- 为什么 Headers 不属于 Service?
 
-- 为什么 Response Payload 需要映射成 Business Object? 
+- 为什么 Response Payload 需要映射成 Business Object?
 
-- 为什么 api_client.py 不应该知道 Repository? 
+- 为什么 api_client.py 不应该知道 Repository?
 
-- 这个设计如何延续 Chapter 10 的 Layered Architecture? 
+- 这个设计如何延续 Chapter 10 的 Layered Architecture?
 
 ## Summary
 
-本节完成了第一个真实 REST API Service Extension. 
-我们没有重新设计项目结构, 而是在现有 Framework 中增加 repository_service.py, 并通过 GitHub REST API 获取真实 Repository 数据. 
+本节完成了第一个真实 REST API Service Extension.
+我们没有重新设计项目结构, 而是在现有 Framework 中增加 repository_service.py, 并通过 GitHub REST API 获取真实 Repository 数据.
