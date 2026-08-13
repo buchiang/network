@@ -33,7 +33,7 @@
 
 # 通过 paramiko 给设备接口配置 IP
 
-```
+```python
 import paramiko
 import time #导入 python 自带时间模块, 用于添加必要延迟, 防止卡顿
 

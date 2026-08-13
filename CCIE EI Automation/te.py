@@ -1,49 +1,43 @@
-from netmiko import ConnectHandler
-#设备信息
+import random
 
-devices = {
-    "device_type": "cisco_ios",
-    "host": "192.168.1.1",
-    "username": "admin",
-    "password": "admin",
-    "secret": "enablepasword",
-}
+red_balls = random.sample(range(1,34), 6)
+blue_ball = random.randint(1, 17)
+red_balls.sort()
 
-#接口信息
+cus_red = random.sample(range(1,34), 6)
+cus_blue = random.randint(1, 17)
+cus_red.sort()
 
-interface = "GigabitEthernet0/1"
-ip_address = "192.168.100.1"
-subnet_mask = "255.255.255.0"
+print(f"你选的号码:\n\t红色球: {cus_red}, 蓝色球: {cus_blue}")
+print("=" * 50)
+print(f"中奖号码:\n\t红色球: {red_balls}, 蓝色球: {blue_ball}")
+print("=" * 50)
 
-#配置接口IP命令
+prize = []
+for value in cus_red:
+    if value in red_balls:
+        prize.append(value)
 
-commands = [
-    f"interface {interface}",
-    f"ip address {ip_address} {subnet_mask}",
-    "no shutdown"
-]
+if len(prize) == 6 and cus_blue == blue_ball:
+    print("一等奖")
+elif len(prize) == 6:
+    print("二等奖")
+elif len(prize) == 5 and cus_blue == blue_ball:
+    print("三等奖")
+elif len(prize) == 5:
+    print("四等奖")
+elif len(prize) == 4 and cus_blue == blue_ball:
+    print("四等奖")
+elif len(prize) == 4:
+    print("五等奖")
+elif len(prize) == 3 and cus_blue == blue_ball:
+    print("五等奖")
+elif len(prize) == 2 and cus_blue == blue_ball:
+    print("六等奖")
+elif cus_blue == blue_ball:
+    print("六等奖")
+else:
+    print("你没中奖")
 
-try:
-    #连接到设备
-    connection = ConnectHandler(**devices)
-    #进入特权模式
-    connection.enable()
-    #发送配置命令
-    output = connection.send_config_set(commands)
-
-    print("配置结果:")
-    print(output)
-
-except Exception as e:
-    print(f"连接或配置失败: {e}")
 
 
-# 验证配置
-
-show_output = connection.send_command(f"show run int {interface}")
-
-print("接口配置验证:")
-print(show_output)
-
-#断连
-connection.disconnect()

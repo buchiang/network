@@ -1,5 +1,5 @@
 
-```
+```python
 from netmiko import ConnectHandler
 #设备信息
 
